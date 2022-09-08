@@ -1,25 +1,31 @@
 <template>
-  <div id="app" class="fcc">
-    <Titulo />
-		<ProductsCard class="mxw"
-			v-for="product in products"
-			:key="product.id"
-			:product="product"
-		/>
+  <div id="app" class="d-flex mt-0">
+    <NavBar />
+    <div class="row">
+        <Titulo class="col-12"/>
+        <ProductsCard class="col-6"
+            v-for="product in products"
+            :key="product.id"
+            :product="product"
+        />
+    </div>
   </div>
 </template>
 
 <script>
 import Titulo from './components/Titulo.vue'
 import ProductsCard from './components/ProductsCard.vue'
+import NavBar from './components/NavBar.vue'
 
 export default {
 	name: 'App',
 	components:{
-		Titulo,ProductsCard
+		Titulo,ProductsCard,NavBar
 	},
 	data(){
 		return{
+      msg:'coder',
+      
 			products:[
 				{id:1,name:"termo",color:"verde"},
 				{id:2,name:"mate",color:"rojo"},
