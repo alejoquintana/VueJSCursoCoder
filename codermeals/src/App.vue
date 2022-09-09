@@ -3,11 +3,18 @@
     <NavBar />
     <div class="row">
         <Titulo class="col-12"/>
-        <ProductsCard class="col-6"
-            v-for="product in products"
-            :key="product.id"
-            :product="product"
-        />
+        <div class="col-12">
+            <div v-for="tienda in tiendas" :key="tienda.id">
+                <h2 class="tienda-titulo">{{tienda.name}}</h2>
+                <div class="row">
+                    <ProductsCard class="col-3"
+                        v-for="product in tienda.products"
+                        :key="product.id"
+                        :product="product"
+                    />
+                </div>
+            </div>
+        </div>
     </div>
   </div>
 </template>
@@ -24,13 +31,37 @@ export default {
 	},
 	data(){
 		return{
-      msg:'coder',
-      
-			products:[
-				{id:1,name:"termo",color:"verde"},
-				{id:2,name:"mate",color:"rojo"},
-				{id:3,name:"bombilla",color:"azul"},
-				{id:4,name:"vaso",color:"transparente"},
+			tiendas:[
+				{
+					id:1,
+                    name:"Pizzeria by Alfredo",
+					products:[
+						{id:1,name:"muzzarella",price:100},
+						{id:2,name:"napolitana",price:100},
+						{id:3,name:"calabresa",price:100},
+						{id:4,name:"fugazzeta",price:100},
+					]
+				},
+				{
+                    id:2,
+					name:"Heladeria Via Flaminia",
+					products:[
+                        {id:1,name:"1 kilo",price:100},
+						{id:2,name:"1/2 kilo",price:100},
+						{id:3,name:"1/4 kilo",price:100},
+						{id:4,name:"Cucurucho",price:100},
+					]
+				},
+				{
+                    id:3,
+                    name:"Panaderia Cabana",
+					products:[
+                        {id:1,name:"Medialunas",price:100},
+						{id:2,name:"Chipa",price:100},
+						{id:3,name:"Biscochitos",price:100},
+						{id:4,name:"Scones",price:100},
+					]
+				},
 			]
 		}
 	}
@@ -38,6 +69,10 @@ export default {
 </script>
 
 <style>
+.tienda-titulo{
+    background: #9eff2f;
+    padding: 12px 0;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

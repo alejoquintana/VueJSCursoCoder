@@ -1,5 +1,7 @@
 <template>
-  <div class="navbar" :class="open ? 'opened' : 'closed'" @click="toggleStatus()">
+  <div class="navbar" :class="open ? 'opened' : 'closed'"
+  @mouseover="open = true"
+  @mouseleave="open = false">
     <div v-if="open">
     </div>
   </div>
@@ -8,7 +10,7 @@
 <script>
 export default {
   data(){return{
-    open:true,
+    open:false,
     count:0
   }},
   methods:{
