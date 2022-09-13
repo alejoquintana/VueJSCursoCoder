@@ -5,6 +5,23 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 Vue.config.productionTip = false
 
+Vue.mixin({
+	mounted(){
+		console.log("Curso de mixins")
+	}
+})
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
+
+/* Vue.mixin({
+	data() {
+		return {
+			counter: 1,
+		}
+	},
+	mounted() {
+			this.counter *= 2
+	}
+}); */

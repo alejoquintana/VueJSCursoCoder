@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <h1>CoderMeals</h1>
+  <div id="title">
+    <h1 ref="title">{{title|mayusculas}}</h1>
+		<button class="btn btn-info" @click="console()">CONSOLE!</button>
   </div>
 </template>
 
@@ -8,8 +9,28 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
+    title: String
+  },
+	filters:{
+		mayusculas: (text)=>{
+			return text.toUpperCase()
+		}
+	},
+	data() {
+		return {
+			msg:'cusro coder'
+		}
+	},
+	methods:{
+		emitEvent(){
+			this.$emit('click');
+		}
+	},
+	mounted(){
+		//this.$refs.inputText.focus()
+		//console.log('this.$refs.title',this.$refs.title);
+		//console.log('this.title',this.title, typeof this.title);
+	}
 }
 </script>
 

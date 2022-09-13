@@ -18,12 +18,12 @@ export default {
       this.open = !this.open
     }
   },
-  watch:{
+  /* watch:{
 		open(){
 			this.count++
 			console.log(this.count);
 		},
-  }
+  } */
 }
 </script>
 
