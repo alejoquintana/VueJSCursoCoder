@@ -1,12 +1,12 @@
 <template>
-  <div class="margin border">
-    <h3>{{product.name}}</h3>
-    <img src="../assets/No-image-available.png">
-    <div class="d-flex justify-content-between">
-        <span>#{{product.id}}</span>
-        <span>{{product.color}}</span>
+    <div class="border p-3">
+        <p>{{product.name}}</p>
+        <img class="w-100" src="../assets/No-image-available.png">
+        <div class="d-flex justify-content-between">
+            <span>#{{product.id}}</span>
+            <span>${{product.price}}</span>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -17,12 +17,12 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .margin{
-    margin: 18px 0;
+    margin: 18px;
 }
 .border{
-    border: 2px solid red;
-    border-radius: 24px;
+	border: 2px solid red;
+	border-radius: 24px;
 }
 </style>
