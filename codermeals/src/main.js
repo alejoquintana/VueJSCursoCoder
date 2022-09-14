@@ -11,14 +11,3 @@ Vue.config.productionTip = false
 new Vue({
   render: h => h(App),
 }).$mount('#app')
-
-/* Vue.mixin({
-	data() {
-		return {
-			counter: 1,
-		}
-	},
-	mounted() {
-			this.counter *= 2
-	}
-}); */

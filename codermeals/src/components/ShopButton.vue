@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<button v-if="count <= 0" class="btn w-100 btn-success" @click="addToCarrito(product)">
+		<button v-if="count <= 0" class="btn w-100 btn-success" @click="buy(product)">
 			COMPRAR <span class="fa-solid fa-cart-plus"></span>
 		</button>
 		<div v-else class="d-flex justify-content-between align-items-center">
@@ -16,9 +16,7 @@
 </template>
 
 <script>
-import mixin from "/src/mixin";
 export default {
-	mixins: [mixin],
 	props: {product: Object},
 	data(){return {
 		count:0
@@ -28,7 +26,12 @@ export default {
 			return this.carrito.find(i => i.product.id == this.product.id)
 		}
 	},
-	
+	methods: {
+		buy() {
+			this.count++
+			this.$emit('buy',{product:this.product,count:1})
+		}
+	},
 }
 </script>
 

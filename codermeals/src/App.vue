@@ -1,5 +1,6 @@
 <template>
 	<div id="app" class="d-flex mt-0">
+		<div class="total-bouncer">{{total}}</div>
 		<NavBar />
 		<div class="row m-0 px-4">
 			<Titulo class="col-12" />
@@ -8,13 +9,12 @@
 					<h2 class="py-3 mb-0">{{tienda.name}}</h2>
 					<div class="row">
 						<div v-for="product in tienda.products" :key="product.id" class="col-3 px-1 mb-0">
-							<ProductsCard :product="product" />
+							<ProductsCard :product="product" @buy="addItem($event)"/>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<ShopCart />
 	</div>
 </template>
 
@@ -22,15 +22,15 @@
 import Titulo from "./components/Titulo.vue";
 import ProductsCard from "./components/ProductsCard.vue";
 import NavBar from './components/NavBar.vue'
-import ShopCart from './components/ShopCart.vue'
 
 export default {
 	name: 'App',
 	components: {
-		Titulo, ProductsCard, NavBar, ShopCart
+		Titulo, ProductsCard, NavBar
 	},
 	data() {
 		return {
+			carrito:[],
 			tiendas: [
 				{
 					id: 1,
@@ -64,6 +64,20 @@ export default {
 				},
 			]
 		}
+	},
+	computed:{
+		total(){
+			let res = 0
+			this.carrito.forEach(item => {
+				res += item.product.price * item.count
+			})
+			return res
+		}
+	},
+	methods:{
+		addItem(item){
+			this.carrito.push(item)
+		}
 	}
 }
 </script>
@@ -72,7 +86,12 @@ export default {
 .border-green {
 	border-top: 2px solid #9fff31;
 }
+.total-bouncer{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
 
+}
 #app {
 	font-family: Avenir, Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;

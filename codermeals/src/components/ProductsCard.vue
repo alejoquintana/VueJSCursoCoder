@@ -7,7 +7,7 @@
 				${{product.price}}
 			</span>
 		</div>
-		<ShopButton :product="product" />
+		<ShopButton :product="product" @buy="$emit('buy',$event)"/>
 	</div>
 </template>
 
