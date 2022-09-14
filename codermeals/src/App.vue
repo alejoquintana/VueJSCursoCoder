@@ -18,9 +18,10 @@
 </template>
 
 <script>
-import Titulo from './components/Titulo.vue'
-import ProductsCard from './components/ProductsCard.vue'
+import Titulo from "./components/Titulo.vue";
+import ProductsCard from "./components/ProductsCard.vue";
 import NavBar from './components/NavBar.vue'
+//import CounterTwo from './components/CounterTwo.vue'
 
 export default {
 	name: 'App',

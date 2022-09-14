@@ -8,8 +8,28 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
-  }
+    title: String
+  },
+	filters:{
+		mayusculas: (text)=>{
+			return text.toUpperCase()
+		}
+	},
+	data() {
+		return {
+			msg:'cusro coder'
+		}
+	},
+	methods:{
+		emitEvent(){
+			this.$emit('click');
+		}
+	},
+	mounted(){
+		//this.$refs.inputText.focus()
+		//console.log('this.$refs.title',this.$refs.title);
+		//console.log('this.title',this.title, typeof this.title);
+	}
 }
 </script>
 
