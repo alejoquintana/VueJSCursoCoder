@@ -1,11 +1,13 @@
 <template>
-	<div class="navbar-container">
-		<div class="items">
-			<div v-for="(item,i) in items" :key="i" class="d-flex justify-space-between align-items-center">
-				<div class="icon">
-					<i class="fa-solid fa-xl" :class="'fa-'+item.icon"></i>
+	<div class="relative navbar-container">
+		<div class="nav-bar">
+			<div class="items">
+				<div v-for="(item,i) in items" :key="i" class="d-flex justify-space-between align-items-center">
+					<div class="icon">
+						<i class="fa-solid fa-xl" :class="'fa-'+item.icon"></i>
+					</div>
+					<span>{{item.name}}</span>
 				</div>
-				<span>{{item.name}}</span>
 			</div>
 		</div>
 	</div>
@@ -32,18 +34,23 @@ export default {
 <style scoped>
 .navbar-container {
 	z-index: 99;
-	background: #fff;
-	transition: width 300ms;
-	position: fixed;
 	width: 75px;
+	min-width: 75px;
 	height: 100vh;
+}
+.nav-bar {
+	z-index: 99;
+	background: #fff;
+	position: fixed;
+	transition: width 300ms;
 	top: 0;
 	left: 0;
+	width: 75px;
+	height: 100%;
 	border-right: 1px solid #ddd;
-	box-shadow: 20px 0px 100px 0px #ddd;
 	overflow: hidden;
 }
-.navbar-container:hover {
+.nav-bar:hover {
 	width: 200px;
 }
 .items{

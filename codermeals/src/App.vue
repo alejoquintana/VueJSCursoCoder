@@ -1,19 +1,20 @@
 <template>
-	<div id="app" class="fcc mt-0 relative">
+	<div id="app" class="d-flex mt-0">
 		<NavBar />
-		<div class="row m-0">
+		<div class="row m-0 px-4">
 			<Titulo class="col-12" />
 			<div class="col-12 px-0">
 				<div v-for="tienda in tiendas" :key="tienda.id" class="border-green my-3">
 					<h2 class="py-3 mb-0">{{tienda.name}}</h2>
 					<div class="row">
-						<div v-for="product in tienda.products" :key="product.id" class="col-3 mb-0">
+						<div v-for="product in tienda.products" :key="product.id" class="col-3 px-1 mb-0">
 							<ProductsCard :product="product" />
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<ShopCart />
 	</div>
 </template>
 
@@ -21,12 +22,12 @@
 import Titulo from "./components/Titulo.vue";
 import ProductsCard from "./components/ProductsCard.vue";
 import NavBar from './components/NavBar.vue'
-//import CounterTwo from './components/CounterTwo.vue'
+import ShopCart from './components/ShopCart.vue'
 
 export default {
 	name: 'App',
 	components: {
-		Titulo, ProductsCard, NavBar
+		Titulo, ProductsCard, NavBar, ShopCart
 	},
 	data() {
 		return {
@@ -45,20 +46,20 @@ export default {
 					id: 2,
 					name: "Heladeria Via Flaminia",
 					products: [
-						{ id: 1, name: "1 kilo", price: 100 },
-						{ id: 2, name: "1/2 kilo", price: 100 },
-						{ id: 3, name: "1/4 kilo", price: 100 },
-						{ id: 4, name: "Cucurucho", price: 100 },
+						{ id: 5, name: "1 kilo", price: 100 },
+						{ id: 6, name: "1/2 kilo", price: 100 },
+						{ id: 7, name: "1/4 kilo", price: 100 },
+						{ id: 8, name: "Cucurucho", price: 100 },
 					]
 				},
 				{
 					id: 3,
 					name: "Panaderia Cabana",
 					products: [
-						{ id: 1, name: "Medialunas", price: 100 },
-						{ id: 2, name: "Chipa", price: 100 },
-						{ id: 3, name: "Biscochitos", price: 100 },
-						{ id: 4, name: "Scones", price: 100 },
+						{ id: 9, name: "Medialunas", price: 100 },
+						{ id: 10, name: "Chipa", price: 100 },
+						{ id: 11, name: "Bizcochitos", price: 100 },
+						{ id: 12, name: "Scones", price: 100 },
 					]
 				},
 			]
@@ -79,9 +80,5 @@ export default {
 	/*text-align: center;*/
 	color: #2c3e50;
 	margin-top: 60px;
-}
-
-.mxw {
-	max-width: 200px;
 }
 </style>

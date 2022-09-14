@@ -1,32 +1,45 @@
 <template>
 	<div class="border p-3">
-		<p>{{product.name}}</p>
-		<img class="w-100" src="../assets/No-image-available.png">
-		<div class="d-flex justify-content-between">
-			<span>#{{product.id}}</span>
-			<span>${{product.price}}</span>
+		<p class="mb-0 bold">{{product.name}}</p>
+		<div class="relative my-2">
+			<img class="w-100" :src="url">
+			<span class="sign px-2 py-1 bold">
+				${{product.price}}
+			</span>
 		</div>
-		<button class="btn btn-success" @click="buy()">COMPRAR</button>
+		<ShopButton :product="product" />
 	</div>
 </template>
 
 <script>
-//import  from "/src/mixin";
+import ShopButton from "./ShopButton";
 export default {
+	components: { ShopButton },
 	props: {
 		product: Object,
 	},
-	methods: {
-		buy() {
-			this.$emit('addToCarrito', 'producto')
+	computed: {
+		url() {
+			// Convierte el nombre del producto en la url donde esta la imagen
+			let slug = this.product.name
+			slug = slug.toLowerCase()
+			slug = slug.trim()
+			slug = slug.replace(/[\s/]/g,'-')
+			return `/${slug}.jpg`
 		},
 	},
-	//mixins:[mixin]
 };
 </script>
 
 <style scoped>
 .border {
-	border-radius: 24px;
+	border-radius: 12px;
+}
+.sign{
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	background-color: #9fff31;
+	border-radius: 12px;
 }
 </style>

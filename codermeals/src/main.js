@@ -8,12 +8,6 @@ import './styles.css'
 
 Vue.config.productionTip = false
 
-Vue.mixin({
-	mounted(){
-		console.log("Curso de mixins")
-	}
-})
-
 new Vue({
   render: h => h(App),
 }).$mount('#app')
