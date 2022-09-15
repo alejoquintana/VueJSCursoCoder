@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<h1 class="my-4 bold text-center">CODERMEALS</h1>
+	<div class="m-0">
+		asd
 	</div>
 </template>
 
