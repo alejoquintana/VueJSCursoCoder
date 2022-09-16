@@ -2,11 +2,26 @@
 	<div class="relative navbar-container">
 		<div class="nav-bar">
 			<div class="items">
-				<div v-for="(item,i) in items" :key="i" class="d-flex justify-space-between align-items-center">
+				<div class="item-option">
 					<div class="icon">
-						<i class="fa-solid fa-xl" :class="'fa-'+item.icon"></i>
+						<i class="fa-solid fa-xl fa-bars"></i>
 					</div>
-					<span>{{item.name}}</span>
+					<span>Menu</span>
+				</div>
+				<div>
+					<div v-for="(item,i) in items" :key="i" @click="$emit('page',item.page)"
+					class="item-option">
+						<div class="icon">
+							<i class="fa-solid fa-xl" :class="'fa-'+item.icon"></i>
+						</div>
+						<span>{{item.name}}</span>
+					</div>
+				</div>
+				<div class="item-option">
+					<div class="icon">
+						<i class="fa-solid fa-xl fa-cog"></i>
+					</div>
+					<span>Configuración</span>
 				</div>
 			</div>
 		</div>
@@ -18,10 +33,11 @@ export default {
 	data() {
 		return {
 			items:[
-				{icon:"bars",name:""},
-				{icon:"user",name:"Mi cuenta"},
-				{icon:"percentage",name:"Descuentos"},
-				{icon:"cog",name:"Configuracion"},
+				//{icon:"bars",name:""},
+				{icon:"home",name:"Inicio",page:'home'},
+				{icon:"user",name:"Ingresar",page:'login'},
+				{icon:"percentage",name:"Descuentos",page:'coupons'},
+				//{icon:"cog",name:"Configuracion"},
 			]
 		}
 	},
@@ -55,6 +71,18 @@ export default {
 }
 .items{
 	width: 200px;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.item-option{
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+.item-option:hover{
+	background: #ddd8;
 }
 .icon{
 	width: 75px;

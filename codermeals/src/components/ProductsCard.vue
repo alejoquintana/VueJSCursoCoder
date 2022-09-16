@@ -2,12 +2,12 @@
 	<div class="border p-3">
 		<p class="mb-0 bold">{{product.name}}</p>
 		<div class="relative my-2">
-			<img class="w-100" :src="url">
+			<img class="w-100" :src="product.name | url">
 			<span class="sign px-2 py-1 bold">
 				${{product.price}}
 			</span>
 		</div>
-		<ShopButton :product="product" @buy="$emit('buy',$event)"/>
+		<ShopButton :product="product" @buy="$emit('buy',$event)" :carrito="carrito"/>
 	</div>
 </template>
 
@@ -17,16 +17,7 @@ export default {
 	components: { ShopButton },
 	props: {
 		product: Object,
-	},
-	computed: {
-		url() {
-			// Convierte el nombre del producto en la url donde esta la imagen
-			let slug = this.product.name
-			slug = slug.toLowerCase()
-			slug = slug.trim()
-			slug = slug.replace(/[\s/]/g,'-')
-			return `/${slug}.jpg`
-		},
+		carrito: Array,
 	},
 };
 </script>

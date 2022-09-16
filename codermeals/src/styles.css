@@ -16,3 +16,6 @@
 .clickable{
 	cursor: pointer;
 }
+.w-fit-content{
+	width: fit-content;
+}
