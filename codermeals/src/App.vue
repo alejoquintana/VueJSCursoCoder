@@ -82,7 +82,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .border-green {
 	border-top: 2px solid #9fff31;
 }
