@@ -47,7 +47,7 @@ export default {
 	},
 	data() {
 		return {
-			page: "home",
+			page: "login",
 			carrito: [],
 			tiendas: [
 				{
