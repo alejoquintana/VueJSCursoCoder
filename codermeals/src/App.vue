@@ -30,11 +30,13 @@
 				</div>
 			</div>
 		</div>
+		<CarritoView @page="page = $event" />
 	</div>
 </template>
 
 <script>
 import NavBar from "./components/NavBar.vue";
+import CarritoView from "./components/CarritoView.vue";
 import LoginForm from "./components/LoginForm.vue";
 import ProductsCard from "./components/ProductsCard.vue";
 
@@ -43,11 +45,12 @@ export default {
 	components: {
 		ProductsCard,
 		NavBar,
+		CarritoView,
 		LoginForm,
 	},
 	data() {
 		return {
-			page: "login",
+			page: "home",
 			carrito: [],
 			tiendas: [
 				{
