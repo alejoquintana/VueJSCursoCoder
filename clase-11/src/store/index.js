@@ -14,6 +14,12 @@ export default new Vuex.Store({
 				return item.length > 4
 			})
 			return filtrado
+		},
+		getCarritoCantidad(state){
+			let filtrado = state.carrito.filter(item => {
+				return item.length > 4
+			})
+			return filtrado.length
 		}
 	},
 

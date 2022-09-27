@@ -1,13 +1,10 @@
 <template>
   <div>
 	<h3>Carrito:</h3>
-		<div v-for="(item,i) in carrito" :key="i">
-			{{item}}
-		</div>
-	<h3>Carrito Filtrado:</h3>
-		<div v-for="(item,i) in carritoFiltrado" :key="'f'+i">
-			{{item}}
-		</div>
+	<div v-for="(item,i) in carrito" :key="i">
+		{{item}}
+	</div>
+	<h3>Carrito Filtrado: {{carritoFiltrado}}</h3>
   </div>
 </template>
 
@@ -18,7 +15,7 @@ export default {
 			return this.$store.state.carrito
 		},
 		carritoFiltrado(){
-			return this.$store.getters.getCarrito
+			return this.$store.getters.getCarritoCantidad
 		}
 	}
 }
