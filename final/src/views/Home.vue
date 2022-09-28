@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import ProductsCard from '@/components/ProductsCard.vue'
+import ProductsCard from '@/components/Products/ProductsCard.vue'
 export default {
 	name: 'HomeView',
 	components: {

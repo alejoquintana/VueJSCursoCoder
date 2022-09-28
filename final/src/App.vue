@@ -9,50 +9,17 @@
 				</h1>
 			</div>
 			<router-view></router-view>
-			<!-- <div v-if="page == 'login'">
-				<LoginForm class="col-12" />
-			</div>
-			<div v-if="page == 'home'" class="row m-0 relative">
-				<span class="total-bouncer bg-success py-2 px-4">
-					TOTAL: $ {{ total }}
-				</span>
-				<div class="col-12 px-0">
-					<div v-for="tienda in tiendas" :key="tienda.id" class="border-green my-3 container">
-						<div class="d-flex align-items-center py-3">
-							<img class="tent-logo" :src="tienda.name | url" :alt="tienda.name" />
-							<h2 class="py-3 ps-4 mb-0">{{ tienda.name }}</h2>
-						</div>
-						<div class="row">
-							<div v-for="product in tienda.products" :key="product.id" class="col-3 px-1 mb-0">
-								<ProductsCard :product="product" @buy="addItem($event)" :carrito="carrito"/>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<CarritoView @page="page = $event" />
-			-->
 		</div>
 	</div>
 </template>
 
 <script>
-import NavBar from "./components/NavBar.vue";
-/*
-import CarritoView from "./components/CarritoView.vue";
-import LoginForm from "./components/LoginForm.vue";
-import ProductsCard from "./components/ProductsCard.vue";
-*/
+import NavBar from "./components/Layout/NavBar.vue";
 
 export default {
 	name: "App",
 	components: {
 		NavBar,
-		/* 
-		ProductsCard,
-		CarritoView,
-		LoginForm,
-		*/
 	},
 	data() {
 		return {

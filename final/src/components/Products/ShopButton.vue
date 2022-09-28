@@ -7,7 +7,8 @@
 			<button class="btn w-25 btn-success" @click="buy(-1)">
 				<span class="fa-solid fa-minus"></span>
 			</button>
-			{{count}}
+			<span class="h3 fw-bold border-success text-success mb-0">{{count}}</span>
+			<!-- <input type="number" v-model="count" @change="changeCount($event)" class="h3 fw-bold border-success text-success mb-0"> -->
 			<button class="btn w-25 btn-success" @click="buy(1)">
 				<span class="fa-solid fa-plus"></span>
 			</button>
@@ -19,7 +20,7 @@
 export default {
 	props: {product: Object},
 	data(){return {
-		}},
+    }},
 	computed:{
 		count(){
 			let item = this.carrito.find(i => i.product.id == this.product.id)
@@ -30,6 +31,9 @@ export default {
 		},
 	},
 	methods: {
+        changeCount(event){
+            this.count = event.target.value
+        },
 		buy(count) {
 			this.$store.dispatch('addItem',{product:this.product,sum:count})
 		}
@@ -38,4 +42,15 @@ export default {
 </script>
 
 <style scoped>
+input{
+    width: 45%;
+    text-align: center;
+    border: 2px solid #88888888;
+    border-radius: 0.375rem;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>
