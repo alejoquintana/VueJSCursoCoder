@@ -23,10 +23,6 @@ export default {
 		count:0
 	}},
 	computed:{
-		/* count(){
-			let item = this.carrito.find(i => i.product.id == this.product.id)
-			return item ? item.count : 0
-		}, */
 		carrito(){
 			return this.$store.getters['carrito/getCarrito']
 		},
@@ -43,6 +39,9 @@ export default {
 				count:value
 			})
 		}
+	},
+	mounted(){
+		this.count = this.$store.getters['carrito/getCount'](this.product.id)
 	}
 }
 </script>

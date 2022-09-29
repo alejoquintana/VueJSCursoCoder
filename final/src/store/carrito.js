@@ -1,6 +1,8 @@
 //const URL = 'https://632ba0ac5568d3cad872d716.mockapi.io/products';
 //import axios from 'axios'
 
+import { BIconArrowReturnRight } from "bootstrap-vue/dist/bootstrap-vue.esm"
+
 export default {
 	namespaced: true,
 	state: {
@@ -9,6 +11,12 @@ export default {
 	getters: {
 		getCarrito(state) {
 			return state.carrito
+		},
+		getCount:(state)=>(product_id)=> {
+			let item = state.carrito.find(
+				item => item.product.id == product_id
+			)
+			return item ? item.count : 0
 		},
 	},
 	mutations: {
