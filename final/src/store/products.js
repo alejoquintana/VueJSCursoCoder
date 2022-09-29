@@ -38,10 +38,8 @@ export default {
 		async fetchProducts({commit}) {
 			await axios.get(URL)
 				.then((response) =>{
-
-					commit('global/cambiarEstado', {
-						modulo:'products',
-						value: response.data
+					commit('changeState', {
+						products:response.data
 					})
 				})
 				//commit('setProducts', response.data))

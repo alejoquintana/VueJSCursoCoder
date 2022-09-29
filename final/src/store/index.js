@@ -1,55 +1,27 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-//import axios from 'axios'
-//const URL = 'https://632ba0ac5568d3cad872d716.mockapi.io/products';
+import { createStore } from 'vuex-extensions'
 
 // MODULOS
 import products from "./products";
-import global from "./global";
-//import carrito from "./carrito";
+import carrito from "./carrito";
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-	state: {
-		carrito: [],
-		str1:"coder",
-		str2:"comidas",
-	},
-	getters: {
-		getTitle(state) {
-			return state.str1+state.str2
-		},
-		getCarrito(state) {
-			return state.carrito
-		},
-	},
-	mutations: {
-		addItem(state,item) {
-			let itemExists = false
-			state.carrito.forEach((listItem) => {
-				if (listItem.product.id == item.product.id) {
-					listItem.count += item.sum;
-					itemExists = true
-				}
-			});
-			if (!itemExists) {
-				state.carrito.push({
-					product: item.product,
-					count: 1
-				});
-			}
-		},
-	},
-	actions: {
-		async addItem({commit},item) {
-			setTimeout(() => {
-				commit('addItem',item)
-			}, 2000);
-		},
-	},
+export default createStore(Vuex.Store, {
+	plugins: [],
 	modules: {
-		products,global
-		//carrito
+		products,
+		carrito
+	},
+	mixins: {
+		mutations: {
+			changeState: function (state, changed) {
+				Object.entries(changed)
+					.forEach(([name, value]) => {
+						state[name] = value
+					})
+			}
+		}
 	}
 })

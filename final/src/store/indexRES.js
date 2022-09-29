@@ -1,12 +1,23 @@
-//const URL = 'https://632ba0ac5568d3cad872d716.mockapi.io/products';
+import Vue from 'vue'
+import Vuex from 'vuex'
 //import axios from 'axios'
+//const URL = 'https://632ba0ac5568d3cad872d716.mockapi.io/products';
 
-export default {
-	namespaced: true,
+// MODULOS
+import products from "./products";
+import carrito from "./carrito";
+
+Vue.use(Vuex)
+
+export default new Vuex.Store({
 	state: {
-		carrito:[],
+		str1:"coder",
+		str2:"comidas",
 	},
 	getters: {
+		getTitle(state) {
+			return state.str1+state.str2
+		},
 		getCarrito(state) {
 			return state.carrito
 		},
@@ -30,7 +41,13 @@ export default {
 	},
 	actions: {
 		async addItem({commit},item) {
-			commit('addItem',item)
+			setTimeout(() => {
+				commit('addItem',item)
+			}, 2000);
 		},
 	},
-}
+	modules: {
+		products,
+		carrito
+	}
+})

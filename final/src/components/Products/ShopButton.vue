@@ -27,7 +27,7 @@ export default {
 			return item ? item.count : 0
 		},
 		carrito(){
-			return this.$store.getters.getCarrito
+			return this.$store.getters['carrito/getCarrito']
 		},
 	},
 	methods: {
@@ -35,7 +35,7 @@ export default {
             this.count = event.target.value
         },
 		buy(count) {
-			this.$store.dispatch('addItem',{product:this.product,sum:count})
+			this.$store.dispatch('carrito/addItem',{product:this.product,sum:count})
 		}
 	},
 }
