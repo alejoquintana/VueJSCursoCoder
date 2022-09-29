@@ -1,11 +1,10 @@
 const URL = 'https://632ba0ac5568d3cad872d716.mockapi.io/products';
 import axios from 'axios'
-import prods from "/public/products.json";
 
 export default {
 	namespaced: true,
 	state: {
-		products: prods
+		products: []
 	},
 	getters: {
 		getProducts(state) {
@@ -16,9 +15,6 @@ export default {
 		setProducts(state, payload) {
 			state.products = payload
 		},
-		SET_PRODUCTS(state, payload) {
-			state.products = payload
-		}
 	},
 	actions: {
 		/* async fetchProducts() {
@@ -42,7 +38,6 @@ export default {
 						products:response.data
 					})
 				})
-				//commit('setProducts', response.data))
 				.catch((err) => {
 					console.log('error', err)
 				})

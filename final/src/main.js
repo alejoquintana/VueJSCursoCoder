@@ -19,10 +19,7 @@ Vue.use(VueAxios, axios);
 Vue.use(VueForm);
 
 Vue.filter('url', function (value) {
-	// Convierte el nombre del producto en la url donde esta la imagen
-	value = value.toLowerCase()
-	value = value.trim()
-	value = value.replace(/[\s/]/g, '-')
+	value = (value%12)+1
 	return `/${value}.jpg`
 })
 

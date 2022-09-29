@@ -2,7 +2,7 @@
 	<div class="border p-3 mb-4">
 		<p class="mb-0 bold">{{product.name}}</p>
 		<div class="relative my-2">
-			<img class="w-100" :src="product.name | url">
+			<img class="w-100" :src="product.img | url">
 			<span class="sign px-2 py-1 bold">
 				${{product.price}}
 			</span>

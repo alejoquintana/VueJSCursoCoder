@@ -16,12 +16,18 @@
 						<span>{{item.name}}</span>
 					</router-link>
 				</div>
-				<div class="item-option">
+				<router-link to="/carrito" v-if="!admin" class="item-option">
+						<div class="icon">
+							<i class="fa-solid fa-xl fa-shopping-cart"></i>
+						</div>
+						<span>Carrito</span>
+				</router-link>
+				<router-link to="/admin" v-if="admin" class="item-option">
 					<div class="icon">
 						<i class="fa-solid fa-xl fa-cog"></i>
 					</div>
 					<span>Configuración</span>
-				</div>
+				</router-link>
 			</div>
 		</div>
 	</div>
@@ -38,6 +44,11 @@ export default {
 				{icon:"percentage",name:"Descuentos",page:'/coupons'},
 				//{icon:"cog",name:"Configuracion"},
 			]
+		}
+	},
+	computed:{
+		admin(){
+			return this.$store.getters['users/getAdmin']
 		}
 	},
 	methods: {

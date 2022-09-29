@@ -12,25 +12,30 @@ export default {
 		},
 	},
 	mutations: {
-		addItem(state,item) {
-			let itemExists = false
-			state.carrito.forEach((listItem) => {
-				if (listItem.product.id == item.product.id) {
-					listItem.count += item.sum;
-					itemExists = true
-				}
-			});
-			if (!itemExists) {
+		updateCarrito(state,item) {
+			const itemIndex = state.carrito.findIndex(i=>{
+				return i.product.id == item.product.id
+			})
+
+			if (itemIndex == -1) {
 				state.carrito.push({
 					product: item.product,
 					count: 1
 				});
+				return
 			}
+
+			state.carrito[itemIndex].count = item.count
+
+			if (item.count <= 0) {
+				state.carrito.splice(itemIndex, 1)
+			}
+
 		},
 	},
 	actions: {
-		async addItem({commit},item) {
-			commit('addItem',item)
+		async updateCarrito({commit},item) {
+			commit('updateCarrito',item)
 		},
 	},
 }

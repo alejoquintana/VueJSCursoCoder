@@ -23,7 +23,7 @@ export default new Vuex.Store({
 		},
 	},
 	mutations: {
-		addItem(state,item) {
+		updateCarrito(state,item) {
 			let itemExists = false
 			state.carrito.forEach((listItem) => {
 				if (listItem.product.id == item.product.id) {
@@ -40,9 +40,9 @@ export default new Vuex.Store({
 		},
 	},
 	actions: {
-		async addItem({commit},item) {
+		async updateCarrito({commit},item) {
 			setTimeout(() => {
-				commit('addItem',item)
+				commit('updateCarrito',item)
 			}, 2000);
 		},
 	},

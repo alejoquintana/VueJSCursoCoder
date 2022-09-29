@@ -1,15 +1,15 @@
 <template>
 	<div>
-		<button v-if="count <= 0" class="btn w-100 btn-success" @click="buy(1)">
+		<button v-if="count <= 0" class="btn w-100 btn-success" @click="count++">
 			COMPRAR <span class="fa-solid fa-cart-plus"></span>
 		</button>
 		<div v-else class="d-flex justify-content-between align-items-center">
-			<button class="btn w-25 btn-success" @click="buy(-1)">
+			<button class="btn w-25 btn-success" @click="count--">
 				<span class="fa-solid fa-minus"></span>
 			</button>
-			<span class="h3 fw-bold border-success text-success mb-0">{{count}}</span>
-			<!-- <input type="number" v-model="count" @change="changeCount($event)" class="h3 fw-bold border-success text-success mb-0"> -->
-			<button class="btn w-25 btn-success" @click="buy(1)">
+			<!-- <span class="h3 fw-bold border-success text-success mb-0">{{count}}</span> -->
+			<input type="number" v-model="count" @change="changeCount($event)" class="h3 fw-bold border-success text-success mb-0">
+			<button class="btn w-25 btn-success" @click="count++">
 				<span class="fa-solid fa-plus"></span>
 			</button>
 		</div>
@@ -20,24 +20,30 @@
 export default {
 	props: {product: Object},
 	data(){return {
-    }},
+		count:0
+	}},
 	computed:{
-		count(){
+		/* count(){
 			let item = this.carrito.find(i => i.product.id == this.product.id)
 			return item ? item.count : 0
-		},
+		}, */
 		carrito(){
 			return this.$store.getters['carrito/getCarrito']
 		},
 	},
 	methods: {
-        changeCount(event){
-            this.count = event.target.value
-        },
-		buy(count) {
-			this.$store.dispatch('carrito/addItem',{product:this.product,sum:count})
-		}
+		changeCount(event){
+			this.count = event.target.value
+		},
 	},
+	watch:{
+		count(value){
+			this.$store.dispatch('carrito/updateCarrito',{
+				product:this.product,
+				count:value
+			})
+		}
+	}
 }
 </script>
 

@@ -5,6 +5,8 @@ import { createStore } from 'vuex-extensions'
 // MODULOS
 import products from "./products";
 import carrito from "./carrito";
+import users from "./users";
+import orderitems from "./order-items";
 
 Vue.use(Vuex)
 
@@ -12,7 +14,9 @@ export default createStore(Vuex.Store, {
 	plugins: [],
 	modules: {
 		products,
-		carrito
+		carrito,
+		users,
+		orderitems
 	},
 	mixins: {
 		mutations: {
