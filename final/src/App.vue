@@ -5,7 +5,7 @@
 			<div>
 				<h1 class="my-4 bold text-center">
 					<span class="fa-solid fa-burger"></span>
-					CODERMEALS
+					{{$store.getters.getTitle}}
 				</h1>
 			</div>
 			<router-view></router-view>

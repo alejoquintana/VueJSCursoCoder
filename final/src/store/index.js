@@ -1,27 +1,30 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+//import axios from 'axios'
+//const URL = 'https://632ba0ac5568d3cad872d716.mockapi.io/products';
+
+// MODULOS
+import products from "./products";
+import global from "./global";
+//import carrito from "./carrito";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
 	state: {
-		products: [],
 		carrito: [],
-		url: 'https://632ba0ac5568d3cad872d716.mockapi.io/products',
+		str1:"coder",
+		str2:"comidas",
 	},
 	getters: {
-		getProducts(state) {
-			return state.products
+		getTitle(state) {
+			return state.str1+state.str2
 		},
 		getCarrito(state) {
 			return state.carrito
-		}
+		},
 	},
 	mutations: {
-		setProducts(state, payload) {
-			state.products = payload
-		},
 		addItem(state,item) {
 			let itemExists = false
 			state.carrito.forEach((listItem) => {
@@ -39,17 +42,14 @@ export default new Vuex.Store({
 		},
 	},
 	actions: {
-		async fetchProducts({state,commit}) {
-			await axios.get(state.url)
-				.then((response) => commit('setProducts', response.data))
-				.catch((err) => {
-					console.log('error', err)
-				})
-				//.finally(() => console.log('Peticion terminada'))
-		},
 		async addItem({commit},item) {
-			commit('addItem',item)
+			setTimeout(() => {
+				commit('addItem',item)
+			}, 2000);
 		},
 	},
-	modules: {}
+	modules: {
+		products,global
+		//carrito
+	}
 })
