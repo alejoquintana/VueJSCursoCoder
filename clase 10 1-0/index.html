@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="display: flex;justify-content:center">
+    <button onclick="fetchh()">HACER FETCH</button>
+    <script>
+        async function fetchh(){
+            const URL = "https://632ba0ac5568d3cad872d716.mockapi.io/cursos"
+
+            const controller = new AbortController()
+            setTimeout(() => {
+                controller.abort()
+            }, 2000);
+            
+            await fetch( URL , {signal:controller.signal} )
+            .then((response) => response.json())
+            .then((json) => console.log(json))
+            .catch((err) => {
+                if (err.name == "AbortError") {
+                    console.log('error por limitacion de tiempo')
+                }
+                else{
+                    console.log('error',err)
+                }
+            })
+            .finally(()=> console.log('Peticion terminada'))
+        }
+    </script>
+</body>
+</html>

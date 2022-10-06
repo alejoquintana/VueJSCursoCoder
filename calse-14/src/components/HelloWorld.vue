@@ -1,30 +1,35 @@
 <template>
-  <div class="hello">
+  <div class="hello" ref="content">
     <h1 @click="console()">{{ msgR }}</h1>
+    <input type="text" v-model="msgR">
   </div>
 </template>
 
-<script>
-import { toRef } from "vue";
+<script >
+import { toRef, onRenderTriggered } from "vue";
 export default {
-  //name: 'HelloWorld',
-  props: {
-    msg: String
-  },
-  setup(props){
-    //console.log('props',props);
-    //console.log('context',context);
-    const msgR = toRef(props,'msg')
-    return{
-        msgR
+    props: {
+        msg: String
+    },
+    setup(props) {
+        onRenderTriggered(() => {
+          console.log('vue 3 ',props.msg);  
+        })
+        //console.log('props',props);
+        //console.log('context',context);
+        let msgR = toRef(props, 'msg')
+        return {
+            msgR
+        }
+    },
+    methods: {
+        console() {
+            console.log(this.msgR);
+        }
+    },
+    mounted(){
+        console.log('vue 2 ',this.msg);
     }
-  },
-  methods:{
-    console(){
-        console.log(this.msgR);
-    }
-  },
-  //mounted(){}
 }
 </script>
 

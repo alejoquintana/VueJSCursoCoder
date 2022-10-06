@@ -1,6 +1,6 @@
 <template>
   <Teleport to="#teleported">
-    <span>CoderHouse</span>
+    <span>CoderMeals</span>
   </Teleport>
 </template>
 
