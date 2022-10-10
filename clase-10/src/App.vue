@@ -3,19 +3,17 @@
 		<h1>Nuestros cursos</h1>
 		<ul>
 			<li v-for="curso in cursos" :key="curso.id">
-				{{curso.nombre}}, {{curso.duracion}}hs <button @click="borrar(curso.id)">borrar</button>
+				{{curso.name}}, {{curso.price}} <button @click="borrar(curso.id)">borrar</button>
 			</li>
 		</ul>
 		<button @click="getCursos()">GET</button>
 
 		<h2>Crear un curso</h2>
 		<div class="fcc">
-			<span>nombre</span>
-			<input type="text" v-model="dataCurso.nombre">
-			<span>creado</span>
-			<input type="text" v-model="dataCurso.creado">
-			<span>duracion</span>
-			<input type="text" v-model="dataCurso.duracion">
+			<span>name</span>
+			<input type="text" v-model="dataCurso.name">
+			<span>price</span>
+			<input type="text" v-model="dataCurso.price">
 			<button @click="postCurso()">POST</button>
 		</div>
 		<button @click="putCurso()">PUT</button>
@@ -29,11 +27,10 @@
 			return {
 				cursos: [],
 				dataCurso:{
-					"nombre":"Deno js",
-					"creado":"2021-10-25",
-					"duracion":"26"
+					"name":"Deno js",
+					"price":"25",
 				},
-				URL: "https://632ba0ac5568d3cad872d716.mockapi.io/cursos"
+				URL: "https://632ba0ac5568d3cad872d716.mockapi.io/products"
 			}
 		},
 		methods: {
@@ -51,11 +48,10 @@
 			},
 			async putCurso() {
 				let dataCurso = {
-					"nombre":"Deno js",
-					"creado":"2021-10-25",
-					"duracion":"26",
+					"name":"updated",
+					"price":"69",
 				}
-				await this.axios.put(this.URL+'/6',dataCurso)
+				await this.axios.put(this.URL+'/'+this.cursos[0].id,dataCurso)
 					.then((response) => console.table(response.data))
 					.catch((err) => console.error(err))
 					.finally(() => console.log('Peticion terminada'))
