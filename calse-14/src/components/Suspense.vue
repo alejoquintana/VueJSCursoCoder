@@ -2,7 +2,9 @@
    <Suspense>
         <SuspenseFetch />
         <template #fallback>
-            Cargando...
+            <span class="loading">
+                Cargando a la promesa...
+            </span>
         </template>
     </Suspense>
 </template>
@@ -16,3 +18,11 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+.loading{
+    font-size: 32px;
+    font-weight: bold;
+    color: red;
+}
+</style>

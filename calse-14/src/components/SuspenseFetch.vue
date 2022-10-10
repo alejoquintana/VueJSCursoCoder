@@ -1,7 +1,7 @@
 <template>
-   <div>
-     r: {{ result }}
-   </div>
+    <div>
+        r: {{ result }}
+    </div>
 </template>
 
 <script>
