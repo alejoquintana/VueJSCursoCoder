@@ -8,6 +8,11 @@ import LoginForm from './components/LoginForm.vue'
 
 export default {
   name: 'App',
+  data() {
+	return {
+		name:'name'
+	}
+  },
   components: {
     LoginForm
   }
